@@ -35,23 +35,35 @@ class VehicleController(Node):
 
         command = Twist()
 
-        if elapsed_time < 3.0:
+        if elapsed_time < 4.0:
             phase = 'FORWARD_1'
 
             command.linear.x = 1.0
             command.angular.z = 0.0
 
-        elif elapsed_time < 6.0:
+        elif elapsed_time < 5.5:
             phase = 'TURN_LEFT'
 
-            command.linear.x = 0.5
-            command.angular.z = 1.0
+            command.linear.x = 0.6
+            command.angular.z = 0.5
 
-        elif elapsed_time < 9.0:
+        elif elapsed_time < 8.5:
             phase = 'FORWARD_2'
 
             command.linear.x = 1.0
-            command.angular.z = -1.0
+            command.angular.z = 0.0
+
+        elif elapsed_time < 10.0:
+            phase = 'TURN_RIGHT'
+
+            command.linear.x = 0.6
+            command.angular.z = -0.5
+
+        elif elapsed_time < 13.0:
+            phase = 'FORWARD_3'
+
+            command.linear.x = 1.0
+            command.angular.z = 0.0
 
         else:
             phase = 'STOP'

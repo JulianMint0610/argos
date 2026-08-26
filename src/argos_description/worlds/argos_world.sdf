@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+<sdf version="1.8">
+  <world name="argos_world">
+
+    <physics name="default_physics" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+      </plugin>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ARGOS perception test road -->
+    <model name="test_road">
+      <static>true</static>
+
+      <pose>15 0 0.015 0 0 0</pose>
+
+      <link name="road_link">
+        <visual name="road_visual">
+          <geometry>
+            <box>
+              <size>40 8 0.03</size>
+            </box>
+          </geometry>
+          
+          
+          <material>
+            <ambient>0.18 0.18 0.18 1</ambient>
+            <diffuse>0.22 0.22 0.22 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Left road boundary -->
+    <model name="left_boundary_line">
+      <static>true</static>
+
+      <pose>15 3.5 0.04 0 0 0</pose>
+
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>40 0.12 0.02</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Right road boundary -->
+    <model name="right_boundary_line">
+      <static>true</static>
+
+      <pose>15 -3.5 0.04 0 0 0</pose>
+
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>40 0.12 0.02</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Center dashed lane markings -->
+
+    <model name="center_dash_01">
+      <static>true</static>
+      <pose>2 0 0.04 0 0 0 </pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.2 0.10 0.02</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="center_dash_02">
+      <static>true</static>
+      <pose>5 0 0.04 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.2 0.01 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="center_dash_03">
+      <static>true</static>
+      <pose>8 0 0.04 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.2 0.10 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="center_dash_04">
+      <static>true</static>
+      <pose>11 0 0.04 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.2 0.10 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="center_dash_05">
+      <static>true</static>
+      <pose>14 0 0.04 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.2 0.10 0.02</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="center_dash_06">
+        <static>true</static>
+        <pose>17 0 0.04 0 0 0</pose>
+        <link name="link">
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>1.2 0.10 0.02</size>
+              </box>
+            </geometry>
+            
+            <material>
+              <ambient>1 1 1 1</ambient>
+              <diffuse>1 1 1 1</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
+
+      <!-- Red perception target -->
+      <model name="red_obstacle">
+        <static>true</static>
+
+        <pose>5.0 2.2 0.5 0 0 0</pose>
+
+        <link name="link">
+          <collision name="collision">
+            <geometry>
+              <box>
+                <size>1 1 1</size>
+              </box>
+            </geometry>
+          </collision>
+
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>1 1 1</size>
+              </box>
+            </geometry>
+
+            <material>
+              <ambient>0.8 0.05 0.05 1</ambient>
+              <diffuse>1 0.05 0.05 1</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
+
+      <!-- Blue perception target -->
+      <model name="blue_obstacle">
+        <static>true</static>
+
+        <pose>8.0 -2.2 0.5 0 0 0</pose>
+
+        <link name="link">
+          <collision name="collision">
+            <geometry>
+              <box>
+                <size>1 1 1</size>
+              </box>
+            </geometry>
+          </collision>
+
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>1 1 1</size>
+              </box>
+            </geometry>
+
+            <material>
+              <ambient>0.05 0.1 0.8 1</ambient>
+              <diffuse>0.05 0.15 1 1</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
+
+      <!-- Far visual landmark -->
+      <model name="marker_wall">
+        <static>true</static>
+
+        <pose>12 0 1.25 0 0 0</pose>
+
+        <link name="link">
+          <collision name="collision">
+            <geometry>
+              <box>
+                <size>0.3 4 2.5</size>
+              </box>
+            </geometry>
+          </collision>
+
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>0.3 4 2.5</size>
+              </box>
+            </geometry>
+
+            <material>
+              <ambient>0.9 0.75 0.1 1</ambient>
+              <diffuse>1 0.85 0.1 1</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
+          
+
+
+
+    <include>
+      <uri>model://argos_vehicle</uri>
+      <name>vehicle_blue</name>
+      <pose>0 0 0.4 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>
