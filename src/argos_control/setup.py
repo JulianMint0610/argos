@@ -15,8 +15,8 @@ setup(
     zip_safe=True,
     maintainer='sjun1',
     maintainer_email='294181894+JulianMint0610@users.noreply.github.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='ARGOS vehicle control package',
+    license='Apache-2.0',
     extras_require={
         'test': [
             'pytest',
